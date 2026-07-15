@@ -166,3 +166,367 @@
             <strong>Notation (Roussarie [2017], p.64) :</strong><br>
             Dans <span class="math">LO</span>, les variables seront notées par des lettres, de préférence minuscules, en italiques, prises à la fin de l'alphabet : principalement <span class="math">x, y, z</span>, mais aussi parfois <span class="math">u, v, w</span>. Elles pourront être éventuellement complétées d'indices numériques : <span class="math">x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, y<sub>1</sub>...</span>, ou de primes : <span class="math">x', x''...</span>.
         </blockquote>
+    </li>
+    <li><strong>Connecteurs logiques :</strong> Symboles permettant de former des formules à partir d'autres formules (ex. <span class="math">&not;, &and;, &or;, &rarr;, &harr;</span>).</li>
+</ul>
+
+<h4>Syntaxe de LO</h4>
+<ol type="i">
+    <li>Si <span class="math">a</span> est une variable ou une constante (d'individu), <span class="math">a</span> est un terme ;</li>
+    <li>Si <span class="math">a</span> et <span class="math">b</span> sont des termes, <span class="math">a = b</span> est une formule (atomique) ;</li>
+    <li>Si <span class="math">a<sub>1</sub>, ..., a<sub>n</sub></span> sont des termes et <span class="math">p</span> un prédicat d'arité <span class="math">n</span> (où <span class="math">n</span> est un entier naturel), <span class="math">p(a<sub>1</sub>, ..., a<sub>n</sub>)</span> est une formule ;</li>
+    <li>Si <span class="math">&phi;</span> et <span class="math">&psi;</span> sont des formules, <span class="math">&not;&phi;</span>, <span class="math">[&phi; &and; &psi;]</span>, <span class="math">[&phi; &or; &psi;]</span>, <span class="math">[&phi; &rarr; &psi;]</span> et <span class="math">[&phi; &harr; &psi;]</span> le sont aussi.</li>
+</ol>
+
+<div class="exercise-box">
+    <div class="exercise-title">Exercice 1</div>
+    <p>Écrivez des formules de LO.</p>
+</div>
+
+<div class="exercise-box">
+    <div class="exercise-title">Exercice 2</div>
+    <p>Modélisez la signification des phrases suivantes à l'aide de la logique des prédicats du premier ordre :</p>
+    <ol type="a">
+        <li>Ali vient.</li>
+        <li>Il appelle Fanta.</li>
+        <li>Elle est belle.</li>
+        <li>C'est une étudiante.</li>
+    </ol>
+</div>
+
+<h2>2. Introduction à la Composition sémantique</h2>
+
+<h3>2.1 Quelques problèmes fondamentaux de composition sémantique</h3>
+<p><em>(Cette section aborde l'articulation entre les structures syntaxiques de surface et leur traduction logique correspondante.)</em></p>
+
+<h3>2.2 Principe de Compositionnalité</h3>
+<blockquote>
+    « Le sens d'une expression linguistique est construit à partir de celui de ses composantes et de la façon dont elles sont agencées. »
+</blockquote>
+
+<div class="exercise-box">
+    <div class="exercise-title">Questions</div>
+    <ol type="a">
+        <li>Proposez une modélisation formelle des prédicats soulignés dans l'exercice de modélisation précédent (Section 1.3, Exercice 2).</li>
+        <li>Comment est construite la signification de la phrase « Ali vient » ?</li>
+    </ol>
+</div>
+
+<h3>La Conjecture de Frege</h3>
+
+<div class="exercise-box">
+    <div class="exercise-title">Activité</div>
+    <ol type="a">
+        <li>On donne le corpus suivant :
+            <ul>
+                <li>(i) Ali vient.</li>
+                <li>(ii) Kouassi vient.</li>
+                <li>(iii) Fatou vient.</li>
+            </ul>
+        </li>
+        <li>Formalisez la dénotation des noms propres du corpus.</li>
+        <li>On donne le contexte suivant :
+            <blockquote>
+                <strong>Contexte :</strong> Il y a une fête de prévue. Vous avez appelé tous les invités pour qu'ils confirment ou non leur participation. Parmi ceux qui ont confirmé se trouvent Kouassi et Fatou, mais Ali a dit qu'il n'était finalement pas disponible.
+            </blockquote>
+            <ol type="i">
+                <li>Formalisez la signification des phrases (i) à (iii) ci-dessus.</li>
+                <li>Donnez la dénotation de chaque formule d'après le modèle <span class="math">M</span> compatible avec ce contexte (Astuce : cela revient à trouver la valeur de <span class="math">[[...]]<sup>M</sup></span> pour chaque formule proposée).</li>
+                <li>Quel est donc le rôle du prédicat dans la signification des phrases (i) à (iii) ?</li>
+            </ol>
+        </li>
+    </ol>
+</div>
+
+<h4>Correction de l'activité</h4>
+<ul>
+    <li><strong>Analyse des noms propres :</strong>
+        <ul>
+            <li>Ali &rarr; <span class="math">a</span></li>
+            <li>Kouassi &rarr; <span class="math">k</span></li>
+            <li>Fatou &rarr; <span class="math">f</span></li>
+        </ul>
+    </li>
+    <li><strong>Signification et Dénotation dans le Modèle <span class="math">M</span> :</strong>
+        <ul>
+            <li>(i) <em>Ali vient.</em> Formule : <span class="math">venir(a)</span>. Évaluation : <span class="math">[ [ venir(a) ] ]<sup>M</sup> = 0</span> (Faux)</li>
+            <li>(ii) <em>Kouassi vient.</em> Formule : <span class="math">venir(k)</span>. Évaluation : <span class="math">[ [ venir(k) ] ]<sup>M</sup> = 1</span> (Vrai)</li>
+            <li>(iii) <em>Fatou vient.</em> Formule : <span class="math">venir(f)</span>. Évaluation : <span class="math">[ [ venir(f) ] ]<sup>M</sup> = 1</span> (Vrai)</li>
+        </ul>
+    </li>
+    <li><strong>Rôle du prédicat :</strong> Le prédicat retourne une valeur de vérité à partir d'un individu. Ainsi, <em>venir</em> dénote une fonction !</li>
+</ul>
+
+<blockquote>
+    « On peut envisager de décomposer les propositions affirmatives comme les équations, les inéquations, et les expressions analytiques, en deux parties dont l'une est fermée sur soi et dont l'autre réclame un complément, est insaturée. On analysera par exemple la proposition "César conquit les Gaules" en "César" et "conquit les Gaules". La seconde partie est insaturée, elle traîne une place vide avec elle, et ce n'est qu'après avoir rempli cette place par un nom propre ou une expression qui représente un nom propre qu'on voit naître un sens fermé sur lui-même. J'appelle ici encore fonction la dénotation de la partie insaturée. Dans ce cas, l'argument est César. »<br>
+    — <em>Frege G., Fonction et Concept (1891), Ecrits Logiques et Philosophiques, p. 91.</em>
+</blockquote>
+
+<div class="definition-box">
+    <div class="definition-title">La Conjecture de Frege</div>
+    La composition sémantique est une <strong>application de fonction</strong>.
+</div>
+
+<h3>2.3 Implémenter la conjecture de Frege</h3>
+
+<h4>2.3.1 Remarques informelles sur les fonctions</h4>
+<ul>
+    <li><strong>Selon Frege :</strong> Une fonction n'est pas un nombre ; c'est une expression incomplète (insaturée) qui demande un objet pour être complète et générer quelque chose.</li>
+    <li><strong>Selon Church (1941:1) :</strong> Une fonction est une règle qui permet, à partir d'un objet donné - appelé <em>argument</em> - d'obtenir un autre objet - appelé <em>image</em>.</li>
+    <li>Les fonctions s'appliquent à des objets d'un type sémantique particulier.</li>
+</ul>
+
+<h4>2.3.2 Des types dans les langues naturelles</h4>
+<p>Deux types basiques forment notre ontologie sémantique :</p>
+<ul>
+    <li><strong>e :</strong> Le type des objets / individus.</li>
+    <li><strong>t :</strong> Le type des phrases (valeurs de vérité).</li>
+</ul>
+
+<p><strong>Types fonctionnels :</strong></p>
+<ul>
+    <li><strong>Concepts (dénotation des prédicats intransitifs) :</strong> <span class="math">e &rarr; t</span> (ou noté <span class="math">&langle;e, t&rangle;</span>)</li>
+    <li><strong>Généralisation :</strong> <span class="math">a &rarr; b</span> (fonctions prenant des objets de type <span class="math">a</span> et retournant des objets de type <span class="math">b</span>).</li>
+    <li><strong>Notation :</strong> <span class="math">&langle;a, b&rangle;</span> désigne le type des fonctions qui prennent un argument de type <span class="math">a</span> et renvoient un résultat de type <span class="math">b</span>.</li>
+    <li><strong>Types récursifs :</strong> Cas des verbes transitifs et de la <em>Schönfinkelisation</em>.</li>
+</ul>
+
+<div class="exercise-box">
+    <div class="exercise-title">Exercice</div>
+    <p>Combien de prédicats avons-nous dans la phrase ci-dessous ?</p>
+    <p style="padding-left: 20px;"><em>Jean tapa Karim.</em></p>
+    <p><strong>Réponse :</strong> Au moins deux : "... tapa Karim" et "tapa ...". Dans cette phrase, on a une fonction qui prend un argument et renvoie une autre fonction, laquelle prend à son tour un argument pour finalement renvoyer une valeur de vérité.</p>
+</div>
+
+<p><strong>Généralisation :</strong> Toute fonction à <span class="math">n</span> arguments peut être décomposée en <span class="math">n</span> fonctions successives à 1 argument. C'est le principe de la <strong>currification</strong> (ou <em>schönfinkelisation</em>).</p>
+
+<div class="definition-box">
+    <div class="definition-title">Définition : Les Types (T)</div>
+    Soit la classe des types d'expressions. <span class="math">T</span> est la plus petite classe telle que :
+    <ol type="i">
+        <li><span class="math">e, t &in; T</span> ;</li>
+        <li>Si <span class="math">a, b &in; T</span>, alors <span class="math">&langle;a, b&rangle; &in; T</span>.</li>
+    </ol>
+</div>
+
+<h4>2.3.3 Formalisation directe ou formalisation indirecte des significations</h4>
+<p>Montague (1973) propose deux options de formalisation des significations :</p>
+<ul>
+    <li><strong>Formalisation directe :</strong> Associer directement les expressions linguistiques à des objets du modèle mathématique.
+        <br><span class="math">F(venir) = &lambda;x [1 ssi x vient]</span>
+    </li>
+    <li><strong>Formalisation indirecte (ou traduction) :</strong> Associer les expressions linguistiques à des expressions d'un langage logique intermédiaire (le Langage Objet), qui sont elles-mêmes associées à des objets du modèle.
+        <br><span class="math">venir &rarr; &lambda;x [venir(x)]</span>
+        <br>Où <span class="math">[ [ &lambda;x [venir(x)] ] ]<sup>M</sup> = f</span>, la fonction qui, à tout <span class="math">x</span> dans son domaine, assigne la valeur de vérité 1 ssi <span class="math">x</span> vient (et 0 le cas échéant).
+    </li>
+</ul>
+<p><em>Dans ce cours, nous adoptons l'approche indirecte de la formalisation (pour l'approche directe, voir Montague (1970), Heim & Kratzer (1998), Akpoué (Ms)).</em></p>
+
+<h3>2.4 Une idéographie pour représenter le sens linguistique</h3>
+<p>L'approche indirecte consiste à traduire les expressions linguistiques dans un langage artificiel. Nous utiliserons les symboles logiques comme des <em>idéogrammes</em> (représentant les concepts sémantiques). Les idéogrammes appartiennent à des types sémantiques. Pour chaque type <span class="math">a</span>, on définit un ensemble de variables <span class="math">Var<sub>a</sub></span> et un ensemble de constantes <span class="math">Con<sub>a</sub></span>. La variable <span class="math">v<sub>n,a</sub></span> désigne la <span class="math">n</span>-ième variable de type <span class="math">a</span>.</p>
+
+<div class="definition-box">
+    <div class="definition-title">Définition : Idéogramme (ME de Montague, 1973)</div>
+    Soit <span class="math">I<sub>a</sub></span> l'ensemble des idéogrammes de type <span class="math">a</span>.
+    <ol type="i">
+        <li>Toutes les variables et les constantes de type <span class="math">a</span> sont des idéogrammes de type <span class="math">a</span> ;</li>
+        <li>Si <span class="math">&alpha;</span> est un idéogramme de type <span class="math">a</span>, et <span class="math">v</span> une variable de type <span class="math">b</span>, alors <span class="math">&lambda;v[&alpha;]</span> est un idéogramme de type <span class="math">&langle;b, a&rangle;</span> ;</li>
+        <li>Si <span class="math">&alpha;</span> est un idéogramme de type <span class="math">&langle;a, b&rangle;</span> et <span class="math">&beta;</span> un idéogramme de type <span class="math">a</span>, alors <span class="math">&alpha;(&beta;)</span> est un idéogramme de type <span class="math">b</span> ;</li>
+        <li>Si <span class="math">&alpha;</span> et <span class="math">&beta;</span> sont des idéogrammes de type <span class="math">a</span>, alors <span class="math">&alpha; = &beta;</span> est un idéogramme de type <span class="math">t</span> ;</li>
+        <li>Si <span class="math">&phi;</span> et <span class="math">&psi;</span> sont des idéogrammes de type <span class="math">t</span>, alors <span class="math">&not;&phi;</span>, <span class="math">[&phi; &and; &psi;]</span>, <span class="math">[&phi; &or; &psi;]</span>, <span class="math">[&phi; &rarr; &psi;]</span>, et <span class="math">[&phi; &harr; &psi;]</span> sont des idéogrammes de type <span class="math">t</span> ;</li>
+        <li>Si <span class="math">v</span> est une variable, et <span class="math">&phi;</span> un idéogramme de type <span class="math">t</span>, alors <span class="math">&forall;v&phi;</span> et <span class="math">&exists;v&phi;</span> sont des idéogrammes de type <span class="math">t</span> ;</li>
+        <li>Rien d'autre n'est un idéogramme.</li>
+    </ol>
+</div>
+
+<h4>Interprétation des idéogrammes</h4>
+<p>Interpréter un idéogramme consiste à déterminer sa dénotation (ou sa valeur) en fonction de deux paramètres : un <strong>modèle</strong> et une <strong>fonction d'assignation de valeurs aux variables</strong>.</p>
+
+<div class="definition-box">
+    <div class="definition-title">Définition : Modèle</div>
+    Un modèle <span class="math">M</span> est une représentation mathématique d'un état du monde : <span class="math">M = &langle;D, F&rangle;</span>, où <span class="math">D</span> est le domaine des individus et <span class="math">F</span> est la fonction d'interprétation qui assigne à chaque constante sa dénotation dans le super-domaine sémantique <span class="math">A</span>.
+</div>
+<p>Exemple : <span class="math">F(&lambda;x[venir(x)]) = f</span>, la fonction qui à tout individu <span class="math">x &in; D</span> associe 1 ssi <span class="math">x</span> vient, et 0 sinon.</p>
+
+<p><strong>Assignation :</strong> La fonction d'assignation <span class="math">g</span> attribue des valeurs aux variables. Par exemple :</p>
+<ul>
+    <li><span class="math">g(x<sub>1,e</sub>) = P</span> (un individu particulier).</li>
+    <li><span class="math">g(P<sub>2,&langle;e,t&rangle;</sub>) = f'</span>, la fonction qui retourne 1 ssi l'individu donné est un enseignant de sémantique formelle.</li>
+</ul>
+
+<p><strong>Modification d'une assignation :</strong> On note <span class="math">g<sub>[u/v]</sub></span> la fonction d'assignation <span class="math">g</span> modifiée de sorte qu'elle assigne l'entité <span class="math">u</span> à la variable <span class="math">v</span>, tout en conservant les mêmes assignations pour toutes les autres variables.</p>
+
+<h4>Définition ensembliste des fonctions</h4>
+<div class="definition-box">
+    <div class="definition-title">Fonction</div>
+    Soit <span class="math">A</span>, <span class="math">B</span> et <span class="math">f</span> des ensembles. <span class="math">f</span> est une fonction de <span class="math">A</span> vers <span class="math">B</span> ssi <span class="math">f</span> est un ensemble de couples <span class="math">(a, b)</span> tels que <span class="math">a &in; A</span> et <span class="math">b &in; B</span>, et pour tout <span class="math">a &in; A</span>, il n'existe pas deux éléments distincts <span class="math">b, c &in; B</span> tels que <span class="math">(a, b) &in; f</span> et <span class="math">(a, c) &in; f</span>.
+</div>
+<ul>
+    <li><strong>Domaine :</strong> Ensemble de départ (noté <span class="math">dom(f)</span>).</li>
+    <li><strong>Argument :</strong> Élément du domaine.</li>
+    <li><strong>Image :</strong> Élément de l'ensemble d'arrivée associé à l'argument. Si <span class="math">&langle;x, y&rangle; &in; f</span>, alors <span class="math">x</span> est l'argument et <span class="math">y</span> est l'image (noté <span class="math">f(x) = y</span>).</li>
+</ul>
+
+<h4>Règles d'interprétation des idéogrammes</h4>
+<p>La valeur sémantique d'un idéogramme <span class="math">&alpha;</span> sous un modèle <span class="math">M</span> et une assignation <span class="math">g</span> est notée <span class="math">[[ &alpha; ]]<sup>M,g</sup></span> :</p>
+<ol type="i">
+    <li>Si <span class="math">&alpha;</span> est une constante, <span class="math">[[ &alpha; ]]<sup>M,g</sup> = F(&alpha;)</span> ;</li>
+    <li>Si <span class="math">&alpha;</span> est une variable, <span class="math">[[ &alpha; ]]<sup>M,g</sup> = g(&alpha;)</span> ;</li>
+    <li>Si <span class="math">v</span> est une variable de type <span class="math">a</span> et <span class="math">&alpha;</span> un idéogramme de type <span class="math">b</span> :
+        <br><span class="math">[[ &lambda;v[&alpha;] ]]<sup>M,g</sup></span> est la fonction <span class="math">h : D<sub>a</sub> &rarr; D<sub>b</sub></span> telle que pour tout <span class="math">x &in; D<sub>a</sub></span>, <span class="math">h(x) = [[ &alpha; ]]<sup>M, g<sub>[x/v]</sub></sup></span> ;
+    </li>
+    <li>Si <span class="math">&alpha;</span> est de type <span class="math">&langle;a, b&rangle;</span> et <span class="math">&beta;</span> de type <span class="math">a</span> :
+        <br><span class="math">[[ &alpha;(&beta;) ]]<sup>M,g</sup> = [[ &alpha; ]]<sup>M,g</sup>([[ &beta; ]]<sup>M,g</sup>)</span> ;
+    </li>
+    <li>Si <span class="math">&alpha;</span> et <span class="math">&beta;</span> sont de type <span class="math">a</span> :
+        <br><span class="math">[[ &alpha; = &beta; ]]<sup>M,g</sup> = 1</span> ssi <span class="math">[[ &alpha; ]]<sup>M,g</sup> = [[ &beta; ]]<sup>M,g</sup></span> ;
+    </li>
+    <li>Si <span class="math">&phi;</span> est de type <span class="math">t</span> :
+        <br><span class="math">[[ &not;&phi; ]]<sup>M,g</sup> = 1</span> ssi <span class="math">[[ &phi; ]]<sup>M,g</sup> = 0</span> ;
+    </li>
+    <li>Si <span class="math">&phi;</span> et <span class="math">&psi;</span> sont de type <span class="math">t</span> :
+        <br><span class="math">[[ &phi; &and; &psi; ]]<sup>M,g</sup> = 1</span> ssi <span class="math">[[ &phi; ]]<sup>M,g</sup> = 1</span> et <span class="math">[[ &psi; ]]<sup>M,g</sup> = 1</span> ;
+    </li>
+    <li>Si <span class="math">&phi;</span> et <span class="math">&psi;</span> sont de type <span class="math">t</span> :
+        <br><span class="math">[[ &phi; &or; &psi; ]]<sup>M,g</sup> = 1</span> ssi <span class="math">[[ &phi; ]]<sup>M,g</sup> = 1</span> ou <span class="math">[[ &psi; ]]<sup>M,g</sup> = 1</span> ;
+    </li>
+    <li>Si <span class="math">&phi;</span> et <span class="math">&psi;</span> sont de type <span class="math">t</span> :
+        <br><span class="math">[[ &phi; &rarr; &psi; ]]<sup>M,g</sup> = 1</span> ssi <span class="math">[[ &phi; ]]<sup>M,g</sup> = 0</span> ou <span class="math">[[ &psi; ]]<sup>M,g</sup> = 1</span> ;
+    </li>
+    <li>Si <span class="math">&phi;</span> et <span class="math">&psi;</span> sont de type <span class="math">t</span> :
+        <br><span class="math">[[ &phi; &harr; &psi; ]]<sup>M,g</sup> = 1</span> ssi <span class="math">[[ &phi; ]]<sup>M,g</sup> = [[ &psi; ]]<sup>M,g</sup></span> ;
+    </li>
+    <li>Si <span class="math">v</span> est une variable et <span class="math">&phi;</span> de type <span class="math">t</span> :
+        <br><span class="math">[[ &exists;v&phi; ]]<sup>M,g</sup> = 1</span> ssi au moins un individu <span class="math">u &in; D</span> est tel que <span class="math">[[ &phi; ]]<sup>M, g<sub>[u/v]</sub></sup> = 1</span> ;
+    </li>
+    <li>Si <span class="math">v</span> est une variable et <span class="math">&phi;</span> de type <span class="math">t</span> :
+        <br><span class="math">[[ &forall;v&phi; ]]<sup>M,g</sup> = 1</span> ssi pour tous les individus <span class="math">u &in; D</span>, <span class="math">[[ &phi; ]]<sup>M, g<sub>[u/v]</sub></sup> = 1</span>.
+    </li>
+</ol>
+
+<p><strong>Conversion lambda (&lambda;-réduction) :</strong> Pour toute variable <span class="math">v</span> de type <span class="math">a</span>, tout terme <span class="math">&beta;</span> de type <span class="math">a</span> et tout idéogramme <span class="math">&alpha;</span>, le schéma de réduction suivant s'applique : <span class="math">&lambda;v[&alpha;](&beta;) &harr; &alpha;</span> (où toutes les occurrences libres de <span class="math">v</span> dans <span class="math">&alpha;</span> sont remplacées par <span class="math">&beta;</span>).</p>
+
+<h2>3. Application à des fragments de langue</h2>
+
+<h3>3.1 Interprétation nœud par nœud</h3>
+
+<div class="exercise-box">
+    <div class="exercise-title">Activité sémantique</div>
+    <ol type="a">
+        <li>Soit le mini-corpus suivant :
+            <ul>
+                <li>(i) Fatou appelle Koffi.</li>
+                <li>(ii) Koffi arrive.</li>
+            </ul>
+        </li>
+        <li>Proposez une traduction logique de tous les mots composants ce corpus.</li>
+        <li>Proposez une représentation arborescente (en supposant une structure binaire standard de syntagme verbal VP) pour ces phrases.</li>
+        <li>À partir de la traduction lexicale et de la structure syntaxique, montrez pas à pas comment le sens global est construit.</li>
+    </ol>
+</div>
+
+<h4>Correction de l'activité</h4>
+
+<p><strong>a. Lexique et traductions :</strong></p>
+<ul>
+    <li>Fatou &rarr; <span class="math">f</span></li>
+    <li>Koffi &rarr; <span class="math">k</span></li>
+    <li>arrive &rarr; <span class="math">&lambda;x [arriver(x)]</span></li>
+    <li>appelle &rarr; <span class="math">&lambda;x [&lambda;y [appeler(y)(x)]]</span></li>
+</ul>
+
+<p><strong>b. Structures syntaxiques et arbres de dérivation :</strong></p>
+
+<h5>Arbre pour la phrase intransitive : "Koffi arrive"</h5>
+<pre>
+            VP [arriver(k)] (type t)
+           /  \
+       DP [k]  V [&lambda;x[arriver(x)]] (type &lt;e,t&gt;)
+        |       |
+      Koffi   arrive
+</pre>
+<p><strong>Calcul sémantique :</strong> L'application de fonction donne <span class="math">&lambda;x[arriver(x)](k)</span> qui se réduit par &lambda;-conversion à <span class="math">arriver(k)</span>.</p>
+
+<h5>Arbre pour la phrase transitive : "Fatou appelle Koffi"</h5>
+<pre>
+                  VP [appeler(f)(k)] (type t)
+                 /  \
+            DP [f]   V' [&lambda;y[appeler(y)(k)]] (type &lt;e,t&gt;)
+             |      /  \
+           Fatou   V    DP [k]
+                   |     |
+                appelle Koffi
+</pre>
+<p><strong>Calcul sémantique pas à pas :</strong></p>
+<ol>
+    <li>Au nœud intermédiaire <strong>V'</strong> : <span class="math">&lambda;x[&lambda;y[appeler(y)(x)]](k)</span> se réduit à <span class="math">&lambda;y[appeler(y)(k)]</span> par substitution de <span class="math">x</span> par <span class="math">k</span>.</li>
+    <li>Au nœud maximal <strong>VP</strong> : <span class="math">&lambda;y[appeler(y)(k)](f)</span> se réduit à <span class="math">appeler(f)(k)</span> par substitution de <span class="math">y</span> par <span class="math">f</span>.</li>
+</ol>
+
+<div class="exercise-box">
+    <div class="exercise-title">Exercice d'application</div>
+    <p>Proposez une interprétation nœud par nœud des items du corpus vus à l'activité de la section 2.2 (Ali vient, Kouassi vient, Fatou vient).</p>
+</div>
+
+<div class="exercise-box">
+    <div class="exercise-title">Exercice : Énoncés à copules (1)</div>
+    <p><strong>a. Soit le corpus suivant :</strong></p>
+    <ul>
+        <li>(i) Ali est malade.</li>
+        <li>(ii) C'est rouge.</li>
+        <li>(iii) Il est fort.</li>
+        <li>(iv) Fatou est calme.</li>
+    </ul>
+    <p><strong>b.</strong> Proposez une traduction du verbe « être » sous forme de lambda-expression.</p>
+    <p><strong>c.</strong> Proposez une interprétation sémantique nœud par nœud de chaque énoncé du corpus.</p>
+</div>
+
+<div class="exercise-box">
+    <div class="exercise-title">Exercice : Énoncés à copule (2)</div>
+    <p>Proposez des phrases simples dans une langue ivoirienne de votre choix, impliquant uniquement un pronom ou un nom propre, une copule et un adjectif.</p>
+</div>
+
+<div class="exercise-box">
+    <div class="exercise-title">Exercice : Phrases simples en langues ivoiriennes</div>
+    <p>Proposez des phrases simples dans une langue ivoirienne de votre choix, impliquant uniquement un/des pronom(s) ou un/des nom(s) propre(s) et des verbes transitifs ou intransitifs.</p>
+</div>
+
+<div class="exercise-box">
+    <div class="exercise-title">Exercice : Propositions coordonnées</div>
+    <p><strong>a. Soit le corpus suivant :</strong></p>
+    <ul>
+        <li>(i) Jean parle et Jacques écoute.</li>
+        <li>(ii) Lucie arrive et Patrice part.</li>
+        <li>(iii) Lucie mange ou Fredy chante.</li>
+        <li>(iv) Tu viens ou tu pars.</li>
+        <li>(v) Tu appelles Kouassi ou appelles Jeannette.</li>
+    </ul>
+    <p><strong>b.</strong> Proposez une traduction sémantique pour les conjonctions « et » et « ou ».</p>
+    <p><strong>c.</strong> On suppose la structure syntaxique binaire suivante pour les propositions coordonnées :</p>
+    <pre>
+                  &amp;P
+                 /  \
+               YP    &amp;'
+                    /  \
+                   &amp;    XP
+                   |
+                 et/ou
+    </pre>
+    <p>Proposez une interprétation nœud par nœud de chaque élément de ce corpus.</p>
+</div>
+
+<h3>3.2 Interprétation dirigée par les types</h3>
+<p><em>(Cette section fait l'objet d'une discussion interactive en classe.)</em></p>
+
+<div class="ref-list">
+    <h2>Références Bibliographiques</h2>
+    <div class="ref-item">Kouamé Josué Akpoué. <em>Petit manuel de sémantique vériconditionnelle</em>. Manuscrit non publié, 2025.</div>
+    <div class="ref-item">Irene Heim and Angelika Kratzer. <em>Semantics in Generative Grammar</em>. Number 13 in Blackwell Textbooks in Linguistics. Blackwell, MA, 1998.</div>
+    <div class="ref-item">Richard Montague. Universal grammar. <em>Theoria</em>, 36(3):373–398, 1970. doi: https://doi.org/10.1111/j.1755-2567.1970.tb00434.x.</div>
+    <div class="ref-item">Richard Montague. The Proper Treatment of Quantification in ordinary English. In Julius Moravcsik, Jaakko Hintikka, and Patrick Suppes, editors, <em>Approaches to Natural Language: Proceedings of the 1970 Stanford Workshop on Grammar and Semantics</em>, number 49 in Synthese Library, pages 221–242. Riedel Publishing Company, Dordrecht/Boston, 1973.</div>
+    <div class="ref-item">Richard Montague and B. Visentini. English as a formal language. <em>Linguaggi Nella Società e Nella Tecnica</em>, pages 188–221, 1970.</div>
+    <div class="ref-item">Laurent Roussarie. <em>Sémantique formelle. Volume 1 : Introduction à la grammaire de Montague</em>. Number 4 in Textbooks in Language Sciences. Language Science Press, Berlin, 2017.</div>
+</div>
+
+</body>
+</html>
