@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Composition Sémantique et Interface Syntaxe-Sémantique</title>
+<style>
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        line-height: 1.6;
+        color: #2c3e50;
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 0 20px;
+        background-color: #fdfdfd;
+    }
+    h1 {
+        font-size: 24pt;
+        color: #1a365d;
+        border-bottom: 3px solid #1a365d;
+        padding-bottom: 10px;
+        margin-top: 30px;
+        text-align: center;
+    }
+    h2 {
+        font-size: 18pt;
+        color: #2b6cb0;
+        border-bottom: 1px solid #cbd5e0;
+        padding-bottom: 6px;
+        margin-top: 35px;
+    }
+    h3 {
+        font-size: 14pt;
+        color: #2d3748;
+        margin-top: 20px;
+        border-left: 3px solid #2b6cb0;
+        padding-left: 10px;
+    }
+    p {
+        margin-bottom: 15px;
+        text-align: justify;
+    }
+    ul, ol {
+        margin-bottom: 20px;
+        padding-left: 25px;
+    }
+    li {
+        margin-bottom: 8px;
+    }
+    blockquote {
+        background-color: #f7fafc;
+        border-left: 4px solid #4a5568;
+        margin: 20px 0;
+        padding: 15px 20px;
+        font-style: italic;
+    }
+    pre {
+        background-color: #2d3748;
+        color: #edf2f7;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 11pt;
+        overflow-x: auto;
+        margin: 20px 0;
+        line-height: 1.2;
+    }
+    .exercise-box {
+        background-color: #ebf8ff;
+        border: 1px solid #bee3f8;
+        border-left: 5px solid #3182ce;
+        border-radius: 4px;
+        padding: 20px;
+        margin: 25px 0;
+    }
+    .exercise-title {
+        font-weight: bold;
+        color: #2b6cb0;
+        font-size: 12pt;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .math {
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+        font-weight: bold;
+        color: #b7791f;
+    }
+    .author {
+        text-align: center;
+        font-size: 13pt;
+        color: #4a5568;
+        margin-top: -10px;
+        margin-bottom: 30px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Composition Sémantique et Interface Syntaxe-Sémantique</h1>
+<div class="author"><strong>Enseignant :</strong> Dr Akpoué Kouamé Josué [cite: 52]</div>
+
+<h2>1. Rappels Fondamentaux</h2>
+
+<h3>1.1 Dénotation, Sens et Représentations (Pragmatiques)</h3>
+<p>Selon Gottlob Frege, la signification d'une expression linguistique s'articule autour de trois dimensions[cite: 2, 5]:</p>
+<ul>
+    <li><strong>La dénotation :</strong> L'objet réel ou l'entité du monde désignée par un nom propre (par exemple, l'individu physique)[cite: 3, 6].</li>
+    <li><strong>Le sens :</strong> Le mode de donation de cette dénotation. Il est purement objectif, public et commun à tous les locuteurs. Le sens relève de la sémantique[cite: 4, 8].</li>
+    <li><strong>La représentation :</strong> Subjective, propre à chaque individu et liée à ses expériences personnelles. Elle relève de la pragmatique[cite: 4, 10].</li>
+</ul>
+<blockquote>
+    « La dénotation d'un nom propre est l'objet même que nous désignons par ce nom ; la représentation que nous y joignons est entièrement subjective ; entre les deux gît le sens, qui n'est pas subjective comme l'est la représentation, mais qui n'est pas non plus l'objet lui-même. » <br>
+    — <em>Frege G., Écrits logiques et philosophiques (ELG) [cite: 3, 4, 5]</em>
+</blockquote>
+
+<h3>1.2 Valeurs de Vérité et Conditions de Vérité</h3>
+<ul>
+    <li><strong>Valeurs de vérité :</strong> Elles correspondent au Vrai (1) et au Faux (0)[cite: 12]. Si les groupes nominaux dénotent des individus, les phrases complètes dénotent des valeurs de vérité[cite: 12].</li>
+    <li><strong>Le Sens comme guide :</strong> Le sens d'une phrase est constitué par l'ensemble de ses <strong>conditions de vérité</strong> [cite: 14], c'est-à-dire la façon dont le monde doit être pour que cette phrase soit vraie[cite: 16].</li>
+</ul>
+
+<h3>1.3 Modélisation à l'aide de la Logique des Prédicats</h3>
+<p>Pour formaliser ces concepts, nous employons le Langage Objet (LO)[cite: 18, 19]:</p>
+<ul>
+    <li><strong>Constantes :</strong> Symboles dont la dénotation ne varie pas, correspondant aux noms propres[cite: 20].</li>
+    <li><strong>Prédicats :</strong> Propriétés ou relations appliquées à des arguments[cite: 21, 24]. L'arité (fixe) définit le nombre d'arguments requis[cite: 25].</li>
+    <li><strong>Variables :</strong> Symboles dont la dénotation varie selon le contexte (ex. <span class="math">x, y, z</span>), analogues aux pronoms[cite: 26, 29].</li>
+</ul>
+
+<div class="exercise-box">
+    <div class="exercise-title">Exercice d'application</div>
+    <p>Modélisez la signification des phrases suivantes à l'aide de la logique des prédicats du premier ordre[cite: 45]:</p>
+    <ol>
+        <li>Ali vient. [cite: 46]</li>
+        <li>Il appelle Fanta. [cite: 48]</li>
+        <li>Elle est belle. [cite: 50]</li>
+        <li>C'est une étudiante. [cite: 51]</li>
+    </ol>
+</div>
+
+<h2>2. Introduction à la Composition Sémantique</h2>
+
+<h3>2.1 Le Principe de Compositionnalité</h3>
+<blockquote>
+    « Le sens d'une expression linguistique est construit à partir de celui de ses composantes et de la façon dont elles sont agencées. » [cite: 60]
+</blockquote>
+
+<h3>2.2 La Conjecture de Frege</h3>
+<p>Pour Frege, la composition sémantique s'effectue par <strong>application de fonction</strong>[cite: 107]. Les expressions insaturées (comme les verbes) agissent comme des fonctions qui attendent des arguments saturés (les noms propres d'individus) pour renvoyer une phrase fermée (une valeur de vérité)[cite: 98, 99, 102].</p>
+
+<h3>2.3 Les Types Sémantiques</h3>
+<p>Deux types basiques forment notre ontologie[cite: 114]:</p>
+<ul>
+    <li><strong>e :</strong> Le type des individus/objets[cite: 115].</li>
+    <li><strong>t :</strong> Le type des phrases (valeurs de vérité)[cite: 116].</li>
+</ul>
+<p>Les fonctions complexes se construisent de manière récursive[cite: 122, 131]. Un prédicat intransitif comme <em>venir</em> est de type <span class="math">&lt;e, t&gt;</span> (il prend un individu et renvoie une valeur de vérité)[cite: 119]. Un verbe transitif (prenant deux arguments) est traité par <strong>currification</strong> (Schönfinkelisation) et reçoit le type complexe <span class="math">&lt;e, &lt;e, t&gt;&gt;</span>[cite: 122, 127].</p>
+
+<h2>3. Application : Interprétation Nœud par Nœud</h2>
+
+<p>Soit le mini-corpus[cite: 240]:<br>
+(i) <em>Fatou appelle Koffi.</em> [cite: 245]<br>
+(ii) <em>Koffi arrive.</em> [cite: 247]</p>
+
+<p><strong>Lexique et traductions associées :</strong></p>
+<ul>
+    <li>Fatou &rarr; <span class="math">f</span> [cite: 254]</li>
+    <li>Koffi &rarr; <span class="math">k</span> [cite: 253]</li>
+    <li>arrive &rarr; <span class="math">&lambda;x [arriver(x)]</span> [cite: 258]</li>
+    <li>appelle &rarr; <span class="math">&lambda;x [&lambda;y [appeler(y)(x)]]</span> [cite: 257]</li>
+</ul>
+
+<h3>Arbre pour la phrase intransitive : "Koffi arrive" [cite: 279]</h3>
+<pre>
+            VP [arriver(k)] (type t)
+           /  \
+       DP [k]  V [&lambda;x[arriver(x)]] (type &lt;e,t&gt;)
+        |       |
+      Koffi   arrive
+</pre>
+<p><strong>Calcul :</strong> L'application de la fonction à l'argument donne <span class="math">&lambda;x[arriver(x)](k)</span>, qui se réduit par conversion lambda à <span class="math">arriver(k)</span>[cite: 290].</p>
+
+<h3>Arbre pour la phrase transitive : "Fatou appelle Koffi" [cite: 273, 276]</h3>
+<pre>
+                  VP [appeler(f)(k)] (type t)
+                 /  \
+            DP [f]   V' [&lambda;y[appeler(y)(k)]] (type &lt;e,t&gt;)
+             |      /  \
+           Fatou   V    DP [k]
+                   |     |
+                appelle Koffi
+</pre>
+<p><strong>Calcul sémantique pas à pas :</strong></p>
+<ol>
+    <li>Au nœud <strong>V'</strong> : <span class="math">&lambda;x[&lambda;y[appeler(y)(x)]](k)</span> se réduit à <span class="math">&lambda;y[appeler(y)(k)]</span>[cite: 283].</li>
+    <li>Au nœud <strong>VP</strong> : <span class="math">&lambda;y[appeler(y)(k)](f)</span> se réduit à <span class="math">appeler(f)(k)</span>[cite: 281].</li>
+</ol>
+
+<h2>4. Travaux Pratiques et Exercices</h2>
+
+<div class="exercise-box">
+    <div class="exercise-title">Exercice 1 : Énoncés à Copule (1) [cite: 298]</div>
+    <p>Soit le corpus suivant[cite: 299]:</p>
+    <ul>
+        <li>(i) Ali est malade.</li>
+        <li>(ii) C'est rouge.</li>
+        <li>(iii) Il est fort.</li>
+        <li>(iv) Fatou est calme.</li>
+    </ul>
+    <p><strong>Consignes :</strong></p>
+    <ol>
+        <li>Proposez une traduction formelle du verbe « être » sous forme de lambda-expression[cite: 300].</li>
+        <li>Proposez une interprétation sémantique nœud par nœud de chaque énoncé[cite: 300].</li>
+    </ol>
+</div>
+
+<div class="exercise-box">
+    <div class="exercise-title">Exercice 2 : Langues Ivoiriennes [cite: 301]</div>
+    <p>Proposez des phrases simples dans une langue ivoirienne de votre choix impliquant :</p>
+    <ol>
+        <li>Un pronom ou nom propre, une copule et un adjectif[cite: 301].</li>
+        <li>Des verbes transitifs ou intransitifs[cite: 302].</li>
+    </ol>
+    <p>Calculez ensuite leur dérivation syntaxe-sémantique nœud par nœud.</p>
+</div>
+
+<div class="exercise-box">
+    <div class="exercise-title">Exercice 3 : Propositions Coordonnées [cite: 303]</div>
+    <p>Soit le corpus[cite: 303]:</p>
+    <ul>
+        <li>(i) Jean parle et Jacques écoute. [cite: 303]</li>
+        <li>(ii) Lucie arrive et Patrice part. [cite: 304]</li>
+        <li>(iii) Lucie mange ou Fredy chante. [cite: 304]</li>
+    </ul>
+    <p><strong>Consignes :</strong></p>
+    <ol>
+        <li>Proposez une traduction sémantique pour les connecteurs « et » et « ou »[cite: 305].</li>
+        <li>En utilisant la structure binaire coordonnée ci-dessous, donnez le calcul sémantique de ces phrases[cite: 306]:
+            <pre>
+                  &amp;P
+                 /  \
+               YP    &amp;'
+                    /  \
+                   &amp;    XP
+                   |
+                 et/ou
+            </pre>
+        </li>
+    </ol>
+</div>
+
+</body>
+</html>
