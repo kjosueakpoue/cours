@@ -2,15 +2,15 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<title>Composition Sémantique et Interface Syntaxe-Sémantique</title>
+<title>Sémantique Formelle : Composition Sémantique et Interface Syntaxe-Sémantique</title>
 <style>
     body {
         font-family: 'Times New Roman', Times, serif;
         line-height: 1.6;
         color: #2c3e50;
-        max-width: 800px;
+        max-width: 850px;
         margin: 40px auto;
-        padding: 0 20px;
+        padding: 0 25px;
         background-color: #fdfdfd;
     }
     h1 {
@@ -52,6 +52,7 @@
         margin: 20px 0;
         padding: 15px 20px;
         font-style: italic;
+        text-align: justify;
     }
     pre {
         background-color: #2d3748;
@@ -62,7 +63,7 @@
         font-size: 11pt;
         overflow-x: auto;
         margin: 20px 0;
-        line-height: 1.2;
+        line-height: 1.3;
     }
     .exercise-box {
         background-color: #ebf8ff;
@@ -93,6 +94,31 @@
         margin-top: -10px;
         margin-bottom: 30px;
     }
+    .definition-box {
+        background-color: #f7fafc;
+        border: 1px solid #e2e8f0;
+        border-left: 5px solid #4a5568;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 4px;
+    }
+    .definition-title {
+        font-weight: bold;
+        color: #2d3748;
+        margin-bottom: 5px;
+    }
+    .ref-list {
+        margin-top: 30px;
+        border-top: 2px solid #2d3748;
+        padding-top: 20px;
+    }
+    .ref-item {
+        margin-bottom: 15px;
+        padding-left: 20px;
+        text-indent: -20px;
+        text-align: justify;
+        font-size: 11pt;
+    }
 </style>
 </head>
 <body>
@@ -100,155 +126,43 @@
 <h1>Composition Sémantique et Interface Syntaxe-Sémantique</h1>
 <div class="author"><strong>Enseignant :</strong> Dr Akpoué Kouamé Josué</div>
 
-<h2>1. Rappels Fondamentaux</h2>
+<h2>1. Rappels</h2>
 
-<h3>1.1 Dénotation, Sens et Représentations (Pragmatiques)</h3>
-<p>Selon Gottlob Frege, la signification d'une expression linguistique s'articule autour de trois dimensions :</p>
-<ul>
-    <li><strong>La dénotation :</strong> L'objet réel ou l'entité du monde désignée par un nom propre (par exemple, l'individu physique).</li>
-    <li><strong>Le sens :</strong> Le mode de donation de cette dénotation. Il est purement objectif, public et commun à tous les locuteurs. Le sens relève de la sémantique.</li>
-    <li><strong>La représentation :</strong> Subjective, propre à chaque individu et liée à ses expériences personnelles. Elle relève de la pragmatique.</li>
-</ul>
+<h3>1.1 Dénotation, Sens et Représentations (pragmatiques)</h3>
+<p>Selon Gottlob Frege, la signification d'une expression s'articule autour de trois dimensions :</p>
 <blockquote>
-    « La dénotation d'un nom propre est l'objet même que nous désignons par ce nom ; la représentation que nous y joignons est entièrement subjective ; entre les deux gît le sens, qui n'est pas subjective comme l'est la représentation, mais qui n'est pas non plus l'objet lui-même. » <br>
+    « La dénotation d'un nom propre est l'objet même que nous désignons par ce nom ; la représentation que nous y joignons est entièrement subjective ; entre les deux gît le sens, qui n'est pas subjectif comme l'est la représentation, mais qui n'est pas non plus l'objet lui-même. »<br>
     — <em>Frege G., Écrits logiques et philosophiques (ELG)</em>
 </blockquote>
 
-<h3>1.2 Valeurs de Vérité et Conditions de Vérité</h3>
 <ul>
-    <li><strong>Valeurs de vérité :</strong> Elles correspondent au Vrai (1) et au Faux (0). Si les groupes nominaux dénotent des individus, les phrases complètes dénotent des valeurs de vérité.</li>
-    <li><strong>Le Sens comme guide :</strong> Le sens d'une phrase est constitué par l'ensemble de ses <strong>conditions de vérité</strong>, c'est-à-dire la façon dont le monde doit être pour que cette phrase soit vraie.</li>
+    <li><strong>Dénotation :</strong> Objet du monde désigné (par exemple par un nom propre).</li>
+    <li><strong>Sens :</strong> Objectif, commun à tous les locuteurs. Il relève de la sémantique.</li>
+    <li><strong>Représentation :</strong> Subjective, elle relève de la pragmatique.</li>
 </ul>
 
-<h3>1.3 Modélisation à l'aide de la Logique des Prédicats</h3>
-<p>Pour formaliser ces concepts, nous employons le Langage Objet (LO) :</p>
+<h3>1.2 Valeurs de vérité et conditions de vérité</h3>
 <ul>
-    <li><strong>Constantes :</strong> Symboles dont la dénotation ne varie pas, correspondant aux noms propres.</li>
-    <li><strong>Prédicats :</strong> Propriétés ou relations appliquées à des arguments. L'arité (fixe) définit le nombre d'arguments requis.</li>
-    <li><strong>Variables :</strong> Symboles dont la dénotation varie selon le contexte (ex. <span class="math">x, y, z</span>), analogues aux pronoms.</li>
+    <li><strong>Valeurs de vérité :</strong> Elles correspondent au Vrai (1) et au Faux (0). Si les groupes nominaux dénotent des individus, les phrases dénotent le Vrai ou le Faux.</li>
+    <li>Le <strong>sens</strong> est ce qui va nous permettre de retrouver la dénotation.</li>
+    <li>Le <strong>sens d'une phrase</strong> est l'ensemble de ses <strong>conditions de vérité</strong>.</li>
+    <li><strong>Conditions de vérité :</strong>
+        <ul>
+            <li>La façon dont le monde doit être pour que cette phrase soit vraie ;</li>
+            <li>Les caractéristiques communes à tous les scénarios où la phrase est vraie.</li>
+        </ul>
+    </li>
 </ul>
 
-<div class="exercise-box">
-    <div class="exercise-title">Exercice d'application</div>
-    <p>Modélisez la signification des phrases suivantes à l'aide de la logique des prédicats du premier ordre :</p>
-    <ol>
-        <li>Ali vient.</li>
-        <li>Il appelle Fanta.</li>
-        <li>Elle est belle.</li>
-        <li>C'est une étudiante.</li>
-    </ol>
-</div>
-
-<h2>2. Introduction à la Composition Sémantique</h2>
-
-<h3>2.1 Le Principe de Compositionnalité</h3>
-<blockquote>
-    « Le sens d'une expression linguistique est construit à partir de celui de ses composantes et de la façon dont elles sont agencées. »
-</blockquote>
-
-<h3>2.2 La Conjecture de Frege</h3>
-<p>Pour Frege, la composition sémantique s'effectue par <strong>application de fonction</strong>. Les expressions insaturées (comme les verbes) agissent comme des fonctions qui attendent des arguments saturés (les noms propres d'individus) pour renvoyer une phrase fermée (une valeur de vérité).</p>
-
-<h3>2.3 Les Types Sémantiques</h3>
-<p>Deux types basiques forment notre ontologie :</p>
+<h3>1.3 Modélisation à l'aide de la logique des prédicats</h3>
+<p>Les éléments du Langage Objet (<span class="math">LO</span>) :</p>
 <ul>
-    <li><strong>e :</strong> Le type des individus/objets.</li>
-    <li><strong>t :</strong> Le type des phrases (valeurs de vérité).</li>
-</ul>
-<p>Les fonctions complexes se construisent de manière récursive. Un prédicat intransitif comme <em>venir</em> est de type <span class="math">&lt;e, t&gt;</span> (il prend un individu et renvoie une valeur de vérité). Un verbe transitif (prenant deux arguments) est traité par <strong>currification</strong> (Schönfinkelisation) et reçoit le type complexe <span class="math">&lt;e, &lt;e, t&gt;&gt;</span>.</p>
-
-<h2>3. Application : Interprétation Nœud par Nœud</h2>
-
-<p>Soit le mini-corpus :<br>
-(i) <em>Fatou appelle Koffi.</em><br>
-(ii) <em>Koffi arrive.</em></p>
-
-<p><strong>Lexique et traductions associées :</strong></p>
-<ul>
-    <li>Fatou &rarr; <span class="math">f</span></li>
-    <li>Koffi &rarr; <span class="math">k</span></li>
-    <li>arrive &rarr; <span class="math">&lambda;x [arriver(x)]</span></li>
-    <li>appelle &rarr; <span class="math">&lambda;x [&lambda;y [appeler(y)(x)]]</span></li>
-</ul>
-
-<h3>Arbre pour la phrase intransitive : "Koffi arrive"</h3>
-<pre>
-            VP [arriver(k)] (type t)
-           /  \
-       DP [k]  V [&lambda;x[arriver(x)]] (type &lt;e,t&gt;)
-        |       |
-      Koffi   arrive
-</pre>
-<p><strong>Calcul :</strong> L'application de la fonction à l'argument donne <span class="math">&lambda;x[arriver(x)](k)</span>, qui se réduit par conversion lambda à <span class="math">arriver(k)</span>.</p>
-
-<h3>Arbre pour la phrase transitive : "Fatou appelle Koffi"</h3>
-<pre>
-                  VP [appeler(f)(k)] (type t)
-                 /  \
-            DP [f]   V' [&lambda;y[appeler(y)(k)]] (type &lt;e,t&gt;)
-             |      /  \
-           Fatou   V    DP [k]
-                   |     |
-                appelle Koffi
-</pre>
-<p><strong>Calcul sémantique pas à pas :</strong></p>
-<ol>
-    <li>Au nœud <strong>V'</strong> : <span class="math">&lambda;x[&lambda;y[appeler(y)(x)]](k)</span> se réduit à <span class="math">&lambda;y[appeler(y)(k)]</span>.</li>
-    <li>Au nœud <strong>VP</strong> : <span class="math">&lambda;y[appeler(y)(k)](f)</span> se réduit à <span class="math">appeler(f)(k)</span>.</li>
-</ol>
-
-<h2>4. Travaux Pratiques et Exercices</h2>
-
-<div class="exercise-box">
-    <div class="exercise-title">Exercice 1 : Énoncés à Copule (1)</div>
-    <p>Soit le corpus suivant :</p>
-    <ul>
-        <li>(i) Ali est malade.</li>
-        <li>(ii) C'est rouge.</li>
-        <li>(iii) Il est fort.</li>
-        <li>(iv) Fatou est calme.</li>
-    </ul>
-    <p><strong>Consignes :</strong></p>
-    <ol>
-        <li>Proposez une traduction formelle du verbe « être » sous forme de lambda-expression.</li>
-        <li>Proposez une interprétation sémantique nœud par nœud de chaque énoncé.</li>
-    </ol>
-</div>
-
-<div class="exercise-box">
-    <div class="exercise-title">Exercice 2 : Langues Ivoiriennes</div>
-    <p>Proposez des phrases simples dans une langue ivoirienne de votre choix impliquant :</p>
-    <ol>
-        <li>Un pronom ou nom propre, une copule et un adjectif.</li>
-        <li>Des verbes transitifs ou intransitifs.</li>
-    </ol>
-    <p>Calculez ensuite leur dérivation syntaxe-sémantique nœud par nœud.</p>
-</div>
-
-<div class="exercise-box">
-    <div class="exercise-title">Exercice 3 : Propositions Coordonnées</div>
-    <p>Soit le corpus :</p>
-    <ul>
-        <li>(i) Jean parle et Jacques écoute.</li>
-        <li>(ii) Lucie arrive et Patrice part.</li>
-        <li>(iii) Lucie mange ou Fredy chante.</li>
-    </ul>
-    <p><strong>Consignes :</strong></p>
-    <ol>
-        <li>Proposez une traduction sémantique pour les connecteurs « et » et « ou ».</li>
-        <li>En utilisant la structure binaire coordonnée ci-dessous, donnez le calcul sémantique de ces phrases :
-            <pre>
-                  &amp;P
-                 /  \
-               YP    &amp;'
-                    /  \
-                   &amp;    XP
-                   |
-                 et/ou
-            </pre>
-        </li>
-    </ol>
-</div>
-
-</body>
-</html>
+    <li><strong>Constantes :</strong> Des symboles dont la dénotation ne varie pas. Elles équivalent aux noms propres de <span class="math">LO</span>.</li>
+    <li><strong>Prédicats :</strong> Servent à dire quelque chose sur quelque chose ou quelqu'un.</li>
+    <li><strong>Argument :</strong> Ce à quoi s'applique le prédicat.</li>
+    <li><strong>Arité :</strong> Le nombre d'arguments que le prédicat admet. Elle est toujours fixe, jamais variable.</li>
+    <li><strong>Variables :</strong> Symboles dont la dénotation peut varier en fonction du contexte, tout comme le font les pronoms dans le langage naturel.
+        <blockquote>
+            <strong>Notation (Roussarie [2017], p.64) :</strong><br>
+            Dans <span class="math">LO</span>, les variables seront notées par des lettres, de préférence minuscules, en italiques, prises à la fin de l'alphabet : principalement <span class="math">x, y, z</span>, mais aussi parfois <span class="math">u, v, w</span>. Elles pourront être éventuellement complétées d'indices numériques : <span class="math">x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, y<sub>1</sub>...</span>, ou de primes : <span class="math">x', x''...</span>.
+        </blockquote>
